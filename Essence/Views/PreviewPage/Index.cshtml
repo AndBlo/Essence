@@ -1,0 +1,61 @@
+@using Essence
+@using EPiServer.Web.Mvc.Html
+@model Essence.Models.ViewModels.PreviewPageViewModel
+@{
+    Layout = null;
+}
+<head>
+    <title>@(Model.CurrentPage.MetaTitle ?? Model.CurrentPage.Name)</title>
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/media.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/style.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/editmode.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/core-style.css")">
+
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Full
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        @Html.PropertyFor(m => m.PreviewArea)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Wide
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        @Html.PropertyFor(m => m.PreviewArea)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Narrow
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        @Html.PropertyFor(m => m.PreviewArea)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/Static/js/jquery/jquery-2.2.4.min.js")"></script>
+    <script src="@Url.Content("~/Static/js/popper.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Static/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Static/js/plugins.js")"></script>
+    <script src="@Url.Content("~/Static/js/classy-nav.min.js")"></script>
+    <script src="@Url.Content("~/Static/js/active.js")"></script>
+</body>

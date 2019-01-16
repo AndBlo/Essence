@@ -1,0 +1,80 @@
+@using Essence.Models.ViewModels
+@using Essence.Models.Pages
+@model PageViewModel<ProductPage>
+<!-- ##### Single Product Details Area Start ##### -->
+<section class="single_product_details_area d-flex align-items-center">
+
+    <!-- Single Product Thumb -->
+    <div class="single_product_thumb clearfix">
+        <div class="product_thumbnail_slides owl-carousel">
+            @if (Model.CurrentPage.ProductImages != null)
+            {
+                foreach (var img in Model.CurrentPage.ProductImages)
+                {
+                    <img src="@Url.ContentUrl(img)" alt="">
+                }
+            }
+        </div>
+    </div>
+
+    <!-- Single Product Description -->
+    <div class="single_product_desc clearfix">
+        <span @Html.EditAttributes(m => m.CurrentPage.Brand)>
+            @Model.CurrentPage.Brand
+        </span>
+        <a href="#">
+            <h2 @Html.EditAttributes(m => m.CurrentPage.ProductName)>
+                @Model.CurrentPage.ProductName
+            </h2>
+        </a>
+        <p class="product-price" @Html.EditAttributes(m => m.CurrentPage.ProductPrice)>
+            @Model.CurrentPage.ProductPrice.ToString("C")
+        </p>
+        <p class="product-desc">
+            @Html.PropertyFor(m => m.CurrentPage.MainBody)
+        </p>
+
+        <!-- Form -->
+        <form class="cart-form clearfix" method="post">
+            <!-- Select Box -->
+            <div class="select-box d-flex mt-50 mb-30">
+                @if (Model.CurrentPage.ProductSizes != null)
+                {
+                    <span @Html.EditAttributes(m => m.CurrentPage.ProductSizes)>
+                        @Html.DropDownList("sizes", Model.CurrentPage.ProductSizes.Select(p => new SelectListItem { Text = Html.Translate("/shop/size") + ": " + p, Value = p }), new { @class = "mr-5" })
+                    </span>
+                }
+                else
+                {
+                    var pSizes = new List<SelectListItem> { new SelectListItem { Text = "Placeholder", Value = "Placeholder" } };
+                    <span @Html.EditAttributes(m => m.CurrentPage.ProductSizes)>
+                        @Html.DropDownList("sizes", pSizes, new { @class = "mr-5" })
+                    </span>
+                }
+                @if (Model.CurrentPage.ProductColors != null)
+                {
+                    <span @Html.EditAttributes(m => m.CurrentPage.ProductColors)>
+                        @Html.DropDownList("colors", Model.CurrentPage.ProductColors.Select(p => new SelectListItem { Text = Html.Translate("/shop/color") + ": " + p, Value = p }))
+                    </span>
+                }
+                else
+                {
+                    var pcolors = new List<SelectListItem> { new SelectListItem { Text = "Placeholder", Value = "Placeholder" } };
+                    <span @Html.EditAttributes(m => m.CurrentPage.ProductColors)>
+                        @Html.DropDownList("sizes", pcolors)
+                    </span>
+                }
+            </div>
+            <!-- Cart & Favourite Box -->
+            <div class="cart-fav-box d-flex align-items-center">
+                <!-- Cart -->
+                <button type="submit" name="addtocart" value="5" class="btn essence-btn">@Html.Translate("/shop/addToCart")</button>
+                <!-- Favourite -->
+                <div class="product-favourite ml-4">
+                    <a href="#" class="favme fa fa-heart"></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- ##### Single Product Details Area End ##### -->

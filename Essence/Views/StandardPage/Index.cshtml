@@ -1,0 +1,29 @@
+@using Essence.Models.ViewModels
+@using Essence.Models.Pages
+@model PageViewModel<StandardPage>
+
+    <!-- ##### Blog Wrapper Area Start ##### -->
+    <div class="single-blog-wrapper">
+
+        <!-- Single Blog Post Thumb -->
+        <div class="single-blog-post-thumb">
+            <img src="@Url.ContentUrl(Model.CurrentPage.PageImage)" alt="">
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="regular-page-content-wrapper section-padding-80">
+                        <div class="regular-page-text">
+                            <h2 @Html.EditAttributes(m => m.CurrentPage.Heading)>
+                                @(Model.CurrentPage.Heading ?? Model.CurrentPage.Name)
+                            </h2>
+                            @Html.PropertyFor(m => m.CurrentPage.MainBody)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.PropertyFor(m => m.CurrentPage.MainContentArea, new { CssClass = "row row-eq-height justify-content-center" })
+        </div>
+    </div>
+    <!-- ##### Blog Wrapper Area End ##### -->

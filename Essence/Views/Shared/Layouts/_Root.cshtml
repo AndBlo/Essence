@@ -1,0 +1,45 @@
+@using Essence.Business.ExtensionMethods
+@using Essence.Models.ViewModels
+@using Essence.Models.Pages
+@model IPageViewModel<SitePageData>
+<html lang="@Model.CurrentPage.Language">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(Model.CurrentPage.MetaTitle ?? Model.CurrentPage.Name)</title>
+    <meta name="keywords" content="@Model.CurrentPage.MetaKeywords" />
+    <meta name="description" content="@Model.CurrentPage.MetaDescription" />
+    <!-- Favicon  -->
+    <link rel="stylesheet" href="@Url.Content("~/Static/img/core-img/favicon.ico")">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Static/css/core-style.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Static/style.css")">
+</head>
+<body>
+    @Html.RenderEPiServerQuickNavigator()
+    <!-- ##### Header Area Start ##### -->
+    <header class="header_area">
+        @Html.Partial("_NavigationMenu")
+    </header>
+    <!-- ##### Header Area End ##### -->
+    @RenderBody()
+
+    @Html.Partial("_Footer")
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="@Url.Content("~/Static/js/jquery/jquery-2.2.4.min.js")"></script>
+    <!-- Popper js -->
+    <script src="@Url.Content("~/Static/js/popper.min.js")"></script>
+    <!-- Bootstrap js -->
+    <script src="@Url.Content("~/Static/js/bootstrap.min.js")"></script>
+    <!-- Plugins js -->
+    <script src="@Url.Content("~/Static/js/plugins.js")"></script>
+    <!-- Classy Nav js -->
+    <script src="@Url.Content("~/Static/js/classy-nav.min.js")"></script>
+    <!-- Active js -->
+    <script src="@Url.Content("~/Static/js/active.js")"></script>
+
+</body>
+</html>

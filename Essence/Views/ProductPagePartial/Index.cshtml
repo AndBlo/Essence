@@ -1,0 +1,39 @@
+@using Essence.Models.ViewModels
+@using Essence.Models.Pages
+@using Essence.Business.ExtensionMethods
+@model PageViewModel<ProductPage>
+@{
+    var imgOne = Model.CurrentPage.ProductImages.FirstOrDefault();
+    var imgTwo = Model.CurrentPage.ProductImages.LastOrDefault();
+}
+
+<div class="single-product-wrapper">
+    <!-- Product Image -->
+    <div class="product-img">
+        <img src="@Url.ContentUrl(imgOne)" alt="">
+        <!-- Hover Thumb -->
+        <img class="hover-img" src="@Url.ContentUrl(imgTwo)" alt="">
+
+        <!-- Favourite -->
+        <div class="product-favourite">
+            <a href="#" class="favme fa fa-heart"></a>
+        </div>
+    </div>
+
+    <!-- Product Description -->
+    <div class="product-description">
+        <span>@Model.CurrentPage.Brand</span>
+        <a href="@Model.CurrentPage.ExternalURLFromSitePageData()">
+            <h6>@Model.CurrentPage.ProductName</h6>
+        </a>
+        <p class="product-price">@Model.CurrentPage.ProductPrice.ToString("C")</p>
+
+        <!-- Hover Content -->
+        <div class="hover-content">
+            <!-- Add to Cart -->
+            <div class="add-to-cart-btn">
+                <a href="#" class="btn essence-btn">@Html.Translate("/shop/addToCart")</a>
+            </div>
+        </div>
+    </div>
+</div>

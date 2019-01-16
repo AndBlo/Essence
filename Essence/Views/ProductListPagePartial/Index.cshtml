@@ -1,0 +1,10 @@
+@using Essence.Models.ViewModels
+@using Essence.Models.Pages
+@using Essence.Business.ExtensionMethods
+@model PageViewModel<ProductListPage>
+
+<div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(@Url.ContentUrl(Model.CurrentPage.PageImage));">
+    <div class="catagory-content">
+        @Html.ContentLink(Model.CurrentPage.ContentLink)
+    </div>
+</div>

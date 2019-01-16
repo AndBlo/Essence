@@ -1,0 +1,21 @@
+@using Essence.Models.ViewModels
+@using Essence.Models.Pages
+@model PageViewModel<ContactPage>
+
+<div class="container">
+    <div class="regular-page-text mt-100">
+        <h2 @Html.EditAttributes(m => m.CurrentPage.Heading)>
+            @(Model.CurrentPage.Heading ?? Model.CurrentPage.Name)
+        </h2>
+        @Html.PropertyFor(m => m.CurrentPage.MainBody)
+    </div>
+
+    @Html.PropertyFor(m => m.CurrentPage.MainContentArea, new
+        {
+           CustomTag = "div",
+           CssClass = "row contact-area",
+           ChildrenCustomTagName = "div",
+           ChildrenCssClass = "col-12 col-sm-6 col-lg-6",
+           Tag = string.Empty
+        })
+</div>

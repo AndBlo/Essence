@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+  <language name="English (United States)"
+            id="en">
+    <shop>
+      <addToCart>Add to cart</addToCart>
+      <buynow>Buy now</buynow>
+      <categories>Categories</categories>
+      <productsfound>Products found</productsfound>
+      <noproductsfound>No products found</noproductsfound>
+      <viewcollection>View collection</viewcollection>
+      <searchplaceholder>Search products</searchplaceholder>
+      <size>Size</size>
+      <color>Color</color>
+      <address>Address</address>
+      <openbetween>Open between</openbetween>
+      <telephone>Telephone</telephone>
+    </shop>
+  </language>
+  <language name="Svenska"
+            id="sv">
+    <shop>
+      <addToCart>Lägg till</addToCart>
+      <categories>Kategorier</categories>
+      <buynow>Köp nu</buynow>
+      <productsfound>Produkter hittade</productsfound>
+      <noproductsfound>Inga produkter hittade</noproductsfound>
+      <viewcollection>Se kollektion</viewcollection>
+      <searchplaceholder>Sök produkter</searchplaceholder>
+      <size>Stl</size>
+      <color>Färg</color>
+      <address>Adress</address>
+      <openbetween>Öppettider</openbetween>
+      <telephone>Telefon</telephone>
+    </shop>
+  </language>
+  <language name="Dansk"
+            id="da">
+    <shop>
+      <addToCart>Tilføj</addToCart>
+      <categories>Kategorier</categories>
+      <buynow>køb nu</buynow>
+      <productsfound>produkter fundet</productsfound>
+      <noproductsfound>Ingen produkter fundet</noproductsfound>
+      <viewcollection>Se samling</viewcollection>
+      <searchplaceholder>Søg produkter</searchplaceholder>
+      <size>Stl</size>
+      <color>Farve</color>
+      <address>Adresse</address>
+      <openbetween>Åbentider</openbetween>
+      <telephone>Telefon</telephone>
+    </shop>
+  </language>
+</languages>

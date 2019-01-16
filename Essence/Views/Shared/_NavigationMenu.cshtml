@@ -1,0 +1,103 @@
+@using Essence.Business.ExtensionMethods
+@using Essence.Models.Pages
+@using Essence.Models.ViewModels
+@using EPiServer.Core
+@model IPageViewModel<SitePageData>
+<div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+    <!-- Classy Menu -->
+    <nav class="classy-navbar" id="essenceNav">
+        <!-- Logo -->
+        <a class="nav-brand" href="/"><img src="@Url.ContentUrl(Model.StartPage.SiteLogoHeader)" alt=""></a>
+        <!-- Navbar Toggler -->
+        <div class="classy-navbar-toggler">
+            <span class="navbarToggler"><span></span><span></span><span></span></span>
+        </div>
+        <!-- Menu -->
+        <div class="classy-menu">
+            <!-- close btn -->
+            <div class="classycloseIcon">
+                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+            </div>
+            <!-- Nav Start -->
+            <div class="classynav">
+                <ul>
+                    @foreach (SitePageData page in Model.MenuPages)
+                    {
+                        <li>
+                            @if (page.HasChildren())
+                            {
+                                @Html.ContentLink(page.ContentLink)
+                                <div class="megamenu">
+                                    <ul class="single-mega cn-col-4">
+                                        @foreach (var subPage in page.GetChildren())
+                                        {
+                                            <li>@Html.ContentLink(subPage.ContentLink)</li>
+                                        }
+                                    </ul>
+                                    <div class="single-mega cn-col-4">
+                                        <img src="@Url.Content("~/Static/img/bg-img/bg-6.jpg")" alt="">
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.ContentLink(page.ContentLink);
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!-- Nav End -->
+        </div>
+    </nav>
+
+    <!-- Header Meta Data -->
+    <div class="header-meta d-flex clearfix justify-content-end">
+        <!-- Search Area -->
+        <div class="search-area">
+            @if (Model.StartPage != null)
+            {
+                if (PageReference.IsNullOrEmpty(Model.StartPage.SearchPageLink))
+                {
+                    if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+                    {
+                        <div class="alert alert-danger">
+                            To enable search across the site,
+                            set the SearchPageLink property.
+                        </div>
+                    }
+                }
+                else
+                {
+                    <form action="@Model.StartPage.SearchPageLink.ExternalURLFromReference()"
+                          method="post">
+                        <input type="search" name="q" id="SearchProducts" placeholder="@Html.Translate("/shop/searchplaceholder")">
+                        <button type="submit"><i class="fa fa-search" id="SearchButton" aria-hidden="true"></i></button>
+                    </form>
+                }
+            }
+        </div>
+        <!-- Favourite Area -->
+        <div class="favourite-area">
+            <a href="#"><img src="@Url.Content("~/Static/img/core-img/heart.svg")" alt=""></a>
+        </div>
+        <!-- Cart Area -->
+        <div class="cart-area">
+            <a href="#" id="essenceCartBtn"><img src="@Url.Content("~/Static/img/core-img/bag.svg")" alt=""> <span></span></a>
+        </div>
+        <!-- User Login Info -->
+        <div class="user-login-info">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="/en/logout"><i class="fa fa-sign-out fa-2x"></i></a>
+            }
+            else
+            {
+                <a href="@FormsAuthentication.LoginUrl?ReturnUrl=@Model.CurrentPage.PageLink.ExternalURLFromReference()">
+                    <i class="fa fa-sign-in fa-2x"></i>
+                </a>
+            }
+        </div>
+    </div>
+
+</div>

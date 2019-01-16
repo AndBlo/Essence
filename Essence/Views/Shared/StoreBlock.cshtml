@@ -1,0 +1,23 @@
+@model Essence.Models.Blocks.StoreBlock
+
+<div class="card">
+    <div class="card-body">
+        <h4 @Html.EditAttributes(m => m.Name) class="text-center">
+            @(Model.Name ?? "")
+        </h4>
+        <div class="row">
+            <img class="img-responsive col-6" style="max-height:200px; min-width:250px;" src="@Url.ContentUrl(Model.Image)" alt="" @Html.EditAttributes(m => m.Image) />
+            <div class="col-6">
+                <div class="contact-info">
+                    <div class="contact-address">
+                        <p><span>@Html.Translate("/shop/address"):</span><br />@Html.PropertyFor(m => m.StreetAddress), @Html.PropertyFor(m => m.City)</p>
+                        <p><span>@Html.Translate("/shop/openbetween"):</span><br />@Html.PropertyFor(m => m.OpenHours)</p>
+                        <p><span>@Html.Translate("/shop/telephone"):</span><br />@Html.PropertyFor(m => m.Phone)</p>
+                        <p><span>Email:</span><br /><a href="mailto:@Model.Email" @Html.EditAttributes(m => m.Email)>@Model.Email</a></p>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+@using Essence.Business.ExtensionMethods
+@model Essence.Models.Blocks.CollectionCampaignBlock
+
+<section class="welcome_area bg-img background-overlay" style="background-image: url(@Url.ContentUrl(Model.Image));">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="hero-content">
+                    <h6 @Html.EditAttributes(m => m.Brand)>
+                        @Html.DisplayFor(m => m.Brand)
+                    </h6>
+                    <h2 @Html.EditAttributes(m => m.Heading)>
+                        @Html.DisplayFor(m => m.Heading)
+                    </h2>
+                    <a @Html.EditAttributes(m => m.PageReference) href="@Model.PageReference.ExternalURLFromReference()" class="btn essence-btn">
+                        @Html.Translate("/shop/viewcollection")
+                    </a>
+                    @*@Html.PropertyFor(m => m.PageReference, "Hejhopp", new { CssClass = "btn essence-btn"})*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

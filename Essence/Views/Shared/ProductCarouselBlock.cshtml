@@ -1,0 +1,26 @@
+@using Essence.Business.ExtensionMethods
+@model Essence.Models.Blocks.ProductCarouselBlock
+
+<section class="new_arrivals_area section-padding-80 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>@Model.Heading</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                    @Html.PropertyFor(m => m.Products, new
+               {
+                   CustomTag = "div",
+                   CssClass = "popular-products-slides owl-carousel owl-theme owl-loaded",
+                   Tag = string.Empty
+               })
+            </div>
+        </div>
+    </div>
+</section>

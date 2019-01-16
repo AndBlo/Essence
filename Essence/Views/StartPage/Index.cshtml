@@ -1,0 +1,13 @@
+@using Essence.Models.ViewModels
+@using EPiServer.Web.Mvc.Html
+@model PageViewModel<Essence.Models.Pages.StartPage>
+
+<div class="container">
+    <h1 @Html.EditAttributes(m => m.CurrentPage.Heading)>
+        @(Model.CurrentPage.Heading ?? "")
+    </h1>
+    <div>
+        @Html.PropertyFor(m => m.CurrentPage.MainBody)
+    </div>
+</div>
+@Html.PropertyFor(m => m.CurrentPage.MainContentArea)
