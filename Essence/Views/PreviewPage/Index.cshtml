@@ -1,5 +1,7 @@
 @using Essence
 @using EPiServer.Web.Mvc.Html
+@using EPiServer.Core
+@using Essence.Business.ExtensionMethods
 @model Essence.Models.ViewModels.PreviewPageViewModel
 @{
     Layout = null;
@@ -14,42 +16,43 @@
 
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                Full
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        @Html.PropertyFor(m => m.PreviewArea)
-                    </div>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            Full
         </div>
-        <div class="card">
-            <div class="card-header">
-                Wide
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-6">
-                        @Html.PropertyFor(m => m.PreviewArea)
-                    </div>
-                </div>
-            </div>
+        <div class="card-body">
+            @foreach (var contentData in Model.PreviewArea.Items)
+            {
+                Html.RenderContentData(contentData.ContentLink.Get<IContent>(), true, "Full");
+            }
         </div>
-        <div class="card">
-            <div class="card-header">
-                Narrow
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-4">
-                        @Html.PropertyFor(m => m.PreviewArea)
-                    </div>
-                </div>
-            </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Wide
+        </div>
+        <div class="card-body">
+            @foreach (var contentData in Model.PreviewArea.Items)
+            {
+                Html.RenderContentData(contentData.ContentLink.Get<IContent>(), true, "Wide");
+            }
+            @*<div class="row">
+            @Html.PropertyFor(m => m.PreviewArea, new { Tag = SiteTags.Wide })
+        </div>*@
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Narrow
+        </div>
+        <div class="card-body">
+            @foreach (var contentData in Model.PreviewArea.Items)
+            {
+                Html.RenderContentData(contentData.ContentLink.Get<IContent>(), true, "Narrow");
+            }
+            @*<div class="row">
+            @Html.PropertyFor(m => m.PreviewArea, new { Tag = SiteTags.Narrow })
+        </div>*@
         </div>
     </div>
     <script src="@Url.Content("~/Static/js/jquery/jquery-2.2.4.min.js")"></script>

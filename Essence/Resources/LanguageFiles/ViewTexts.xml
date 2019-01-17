@@ -16,6 +16,9 @@
       <openbetween>Open between</openbetween>
       <telephone>Telephone</telephone>
     </shop>
+    <forms>
+      <isrequired>This field is required</isrequired>
+    </forms>
   </language>
   <language name="Svenska"
             id="sv">
@@ -33,6 +36,9 @@
       <openbetween>Öppettider</openbetween>
       <telephone>Telefon</telephone>
     </shop>
+    <forms>
+      <isrequired>Det här fältet måste fyllas i</isrequired>
+    </forms>
   </language>
   <language name="Dansk"
             id="da">
@@ -50,5 +56,8 @@
       <openbetween>Åbentider</openbetween>
       <telephone>Telefon</telephone>
     </shop>
+    <forms>
+      <isrequired>Dette felt skal udfyldes</isrequired>
+    </forms>
   </language>
 </languages>

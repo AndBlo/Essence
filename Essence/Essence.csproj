@@ -141,6 +141,9 @@
     <Reference Include="EPiServer.Web.WebControls, Version=11.10.6.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.AspNet.11.10.6\lib\net461\EPiServer.Web.WebControls.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -250,8 +253,10 @@
     <Compile Include="Business\ExtensionMethods\LayoutExtensionMethods.cs" />
     <Compile Include="Business\ExtensionMethods\MiscExtensions.cs" />
     <Compile Include="Business\ExtensionMethods\SectionExtensionMethods.cs" />
+    <Compile Include="Business\Initialization\DisplayOptionsInitializationModule.cs" />
     <Compile Include="Business\Initialization\RegisterAdminInitializationModule.cs" />
     <Compile Include="Business\Initialization\RegisterDependencyResolverInitializationModule.cs" />
+    <Compile Include="Controllers\EventFormContainerBlockController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\PreviewPageController.cs" />
     <Compile Include="Controllers\ProductListPagePartialController.cs" />
@@ -259,11 +264,13 @@
     <Compile Include="Controllers\ProductPagePartialController.cs" />
     <Compile Include="Controllers\ProductPageController.cs" />
     <Compile Include="Controllers\ContactPageController.cs" />
+    <Compile Include="Controllers\SalesCampaignBlockController.cs" />
     <Compile Include="Controllers\StandardPageController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Blocks\EventFormContainerBlock.cs" />
     <Compile Include="Models\Blocks\CollectionCampaignBlock.cs" />
     <Compile Include="Models\Blocks\ProductCarouselBlock.cs" />
     <Compile Include="Models\Blocks\SalesCampaignBlock.cs" />
@@ -288,6 +295,7 @@
     <Compile Include="SiteContentIcons.cs" />
     <Compile Include="SiteGroupNames.cs" />
     <Compile Include="SiteTabNames.cs" />
+    <Compile Include="SiteTags.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Properties\" />
@@ -422,6 +430,23 @@
     <Content Include="Static\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\ElementBlocks\CaptchaElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\ChoiceElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\FileUploadElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\FormContainerBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\FormStepBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\ImageChoiceElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\NumberElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\ParagraphTextElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\PredefinedHiddenElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\RangeElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\ResetButtonElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\SelectionElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\SubmitButtonElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\TextareaElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\TextboxElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\UrlElementBlock.ascx" />
+    <Content Include="Views\Shared\ElementBlocks\VisitorDataHiddenElementBlock.ascx" />
     <Content Include="Views\Shared\Layouts\_Root-changes.txt" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
@@ -469,12 +494,18 @@
     <Content Include="Views\ProductListPage\Index.cshtml" />
     <Content Include="Views\ProductPagePartial\Index.cshtml" />
     <Content Include="Views\ProductListPage\_ProductPartial.cshtml" />
-    <Content Include="Views\Shared\SalesCampaignBlock.cshtml" />
     <Content Include="Views\Shared\CollectionCampaignBlock.cshtml" />
     <Content Include="Views\Shared\ProductCarouselBlock.cshtml" />
     <Content Include="Views\PreviewPage\Index.cshtml" />
     <Content Include="Views\Shared\CategoriesBlock.cshtml" />
     <Content Include="Views\ProductListPagePartial\Index.cshtml" />
+    <Content Include="Views\Shared\EventFormContainerBlock.cshtml" />
+    <Content Include="Views\SalesCampaignBlock\Index.cshtml" />
+    <Content Include="Views\SalesCampaignWideBlock\Index.cshtml" />
+    <Content Include="Views\SalesCampaignNarrowBlock\Index.cshtml" />
+    <Content Include="Views\EventFormContainerBlock\Index.cshtml" />
+    <Content Include="Views\EventFormContainerWideBlock\Index.cshtml" />
+    <Content Include="Views\EventFormContainerNarrowBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

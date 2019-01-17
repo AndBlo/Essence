@@ -1,0 +1,30 @@
+@using Essence.Business.ExtensionMethods
+@model Essence.Models.Blocks.EventFormContainerBlock
+
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    <div class="cta-area">
+        <div class="row">
+            <div class="col-12">
+                <div class="cta-content bg-img background-overlay" style="background-image: url(@Url.ContentUrl(Model.BackgroundImage));">
+                    <div class="h-100 d-flex align-items-center justify-content-end">
+                        <div class="container">
+                            @Html.PropertyFor(m => m.Forms)
+                        </div>
+                        @*<div class="cta--text">
+                                <h6 @Html.EditAttributes(m => m.DiscountText)>
+                                    @Html.DisplayFor(m => m.DiscountText)
+                                </h6>
+                                <h2 @Html.EditAttributes(m => m.Heading)>
+                                    @Html.DisplayFor(m => m.Heading)
+                                </h2>
+                                <a @Html.EditAttributes(m => m.PageReference) href="@Model.PageReference.ExternalURLFromReference()" class="btn essence-btn">
+                                    @Html.Translate("/shop/viewcollection")
+                                </a>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

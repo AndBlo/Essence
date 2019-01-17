@@ -1,8 +1,12 @@
 @using Essence.Models.ViewModels
 @using EPiServer.Web.Mvc.Html
+@using Essence.Business.ExtensionMethods
+@using EPiServer.Core;
+
 @model PageViewModel<Essence.Models.Pages.StartPage>
 
 <div class="container">
+    <br />
     <h1 @Html.EditAttributes(m => m.CurrentPage.Heading)>
         @(Model.CurrentPage.Heading ?? "")
     </h1>
@@ -10,4 +14,12 @@
         @Html.PropertyFor(m => m.CurrentPage.MainBody)
     </div>
 </div>
-@Html.PropertyFor(m => m.CurrentPage.MainContentArea)
+<div @Html.EditAttributes(m => m.CurrentPage.MainContentArea)>
+    @foreach (var contentItem in Model.CurrentPage.MainContentArea.Items)
+    {
+        @Html.Raw("<div class='row'>")
+        Html.RenderContentData(contentItem.ContentLink.Get<IContent>(), true);
+        @Html.Raw("</div>")
+    }
+</div>
+@*@Html.PropertyFor(m => m.CurrentPage.MainContentArea)*@

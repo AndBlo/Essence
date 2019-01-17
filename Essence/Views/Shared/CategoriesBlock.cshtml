@@ -1,15 +1,17 @@
 @using Essence.Business.ExtensionMethods
 @model Essence.Models.Blocks.CategoriesBlock
 
-<div class="top_catagory_area section-padding-80 clearfix">
-    <div class="container">
-        @Html.PropertyFor(m => m.Categories, new
-           {
-               CustomTag = "div",
-               CssClass = "row justify-content-center",
-               ChildrenCustomTagName = "div",
-               ChildrenCssClass = "col-12 col-sm-6 col-lg-4",
-               Tag = string.Empty
-           })
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="top_catagory_area section-padding-80 clearfix">
+        <div class="container">
+            @Html.PropertyFor(m => m.Categories, new
+               {
+                   CustomTag = "div",
+                   CssClass = "row justify-content-center",
+                   ChildrenCustomTagName = "div",
+                   ChildrenCssClass = "col-12 col-sm-6 col-lg-4",
+                   Tag = string.Empty
+               })
+        </div>
     </div>
 </div>

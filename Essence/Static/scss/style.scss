@@ -941,7 +941,8 @@ img {
             }
 
             @media #{$breakpoint-xs} {
-                font-size: 30px;
+                font-size: 20px;
+                margin-bottom: 7px;
             }
         }
 
@@ -2325,4 +2326,5 @@ img {
         }
     }
 }
+
 /* ##### The End ##### */
