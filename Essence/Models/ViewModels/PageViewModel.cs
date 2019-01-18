@@ -9,9 +9,11 @@ namespace Essence.Models.ViewModels
     {
         public T CurrentPage { get; set; }
         public StartPage StartPage { get; set; }
-        public IEnumerable<SitePageData> MenuPages { get; set; }
+        //public IEnumerable<SitePageData> MenuPages { get; set; }
+        public IEnumerable<IMenuPage> MenuPages { get; set; }
         public IContent Section { get; set; }
         public IEnumerable<SitePageData> Children { get; set; }
+        public IEnumerable<ProductListPage> Categories { get; set; }
 
         // constructors cannot infer the generic type so you must:
         // var model = new PageViewModel<ProductPage>(currentPage);

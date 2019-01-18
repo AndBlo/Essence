@@ -1,7 +1,7 @@
 @using Essence.Business.ExtensionMethods
+@using EPiServer.Core
 @using Essence.Models.Pages
 @using Essence.Models.ViewModels
-@using EPiServer.Core
 @model IPageViewModel<SitePageData>
 <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
     <!-- Classy Menu -->
@@ -21,15 +21,15 @@
             <!-- Nav Start -->
             <div class="classynav">
                 <ul>
-                    @foreach (SitePageData page in Model.MenuPages)
+                    @foreach (var menuPage in Model.MenuPages)
                     {
                         <li>
-                            @if (page.HasChildren())
+                            @if (menuPage.HasChildren)
                             {
-                                @Html.ContentLink(page.ContentLink)
+                                @Html.ContentLink(menuPage.Page.ContentLink)
                                 <div class="megamenu">
                                     <ul class="single-mega cn-col-4">
-                                        @foreach (var subPage in page.GetChildren())
+                                        @foreach (var subPage in menuPage.Children)
                                         {
                                             <li>@Html.ContentLink(subPage.ContentLink)</li>
                                         }
@@ -41,7 +41,7 @@
                             }
                             else
                             {
-                                @Html.ContentLink(page.ContentLink);
+                                @Html.ContentLink(menuPage.Page.ContentLink);
                             }
                         </li>
                     }

@@ -1,0 +1,97 @@
+@using EPiServer.Core
+@using Essence.Models.ViewModels
+@using Essence.Models.Pages
+@using Essence.Business.ExtensionMethods
+@model CollectionProductListPageViewModel
+@{
+    Layout = "~/Views/Shared/Layouts/_LeftSideMenu.cshtml";
+}
+
+<div class="shop_grid_product_area">
+    <div class="row">
+        <div class="col-12">
+            <div class="product-topbar d-flex align-items-center justify-content-between">
+                <!-- Total Products -->
+                <div class="total-products">
+                    @if (Model.ProductPageCount.HasValue)
+                    {
+                        <p><span>@Model.ProductPageCount.Value</span> @Html.Translate("/shop/productsfound")</p>
+                    }
+                    else
+                    {
+                        <p>@Html.Translate("/shop/noproductsfound")</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div @Html.EditAttributes(m => m.CurrentPage.Products)>
+        <div class="row">
+            @if (Model.CurrentPage.Products != null)
+            {
+                foreach (var contentItem in Model.CurrentPage.Products.Items)
+                {
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        @{
+                            Html.RenderContentData(contentItem.ContentLink.Get<IContent>(), true);
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    @*@Html.PropertyFor(x => x.CurrentPage.Products,
+        new
+        {
+            CustomTag = "div",
+            CssClass = "row",
+            ChildrenCustomTagName = "div",
+            ChildrenCssClass = "col-12 col-sm-6 col-lg-4",
+            Tag = string.Empty
+        })*@
+</div>
+
+@section SideMenu{
+    <div class="shop_sidebar_area">
+
+        @Html.Partial("_CategoriesListWidget", Model)
+
+        @*<!-- ##### Single Widget ##### -->
+        <div class="widget catagory mb-50">
+            @if (Model.MenuPages.Count() > 0 && Model.MenuPages.Any(p => p.Name == "Shop"))
+            {
+                <!-- Widget Title -->
+                <h6 class="widget-title mb-30">@Html.Translate("/shop/categories")</h6>
+
+                <!--  Catagories  -->
+                <div class="catagories-menu">
+                    <ul id="menu-content2" class="menu-content collapse show">
+                        @foreach (SitePageData page in Model.MenuPages.Where(p => p.Name == "Shop").First().GetChildren(OnlyVisibleToVisitors: true))
+                        {
+                            <li>@Html.ContentLink(page.ContentLink)</li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>*@
+    </div>
+}
+
+@section Breadcrumb{
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb_area bg-img" style="@(Model.CurrentPage.PageImage != null ? "background-image: url(" + Url.ContentUrl(Model.CurrentPage.PageImage) + ")" : "")">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2 @Html.EditAttributes(m => m.CurrentPage.Heading)>
+                            @Model.CurrentPage.Heading
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+}

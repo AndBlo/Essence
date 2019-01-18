@@ -15,6 +15,7 @@
       <address>Address</address>
       <openbetween>Open between</openbetween>
       <telephone>Telephone</telephone>
+      <all>All</all>
     </shop>
     <forms>
       <isrequired>This field is required</isrequired>
@@ -35,6 +36,7 @@
       <address>Adress</address>
       <openbetween>Öppettider</openbetween>
       <telephone>Telefon</telephone>
+      <all>Alla</all>
     </shop>
     <forms>
       <isrequired>Det här fältet måste fyllas i</isrequired>
@@ -55,6 +57,7 @@
       <address>Adresse</address>
       <openbetween>Åbentider</openbetween>
       <telephone>Telefon</telephone>
+      <all>Alle</all>
     </shop>
     <forms>
       <isrequired>Dette felt skal udfyldes</isrequired>

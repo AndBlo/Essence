@@ -1,0 +1,27 @@
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using Essence.Business.ExtensionMethods
+@using Essence.Models.ViewModels
+@using Essence.Models.Pages
+@model IPageViewModel<SitePageData>
+
+<div class="widget catagory mb-50">
+    @if (Model.MenuPages.Count() > 0 && Model.MenuPages.Any(p => p.Name == "Shop"))
+    {
+        <!-- Widget Title -->
+        <h6 class="widget-title mb-30">@Html.Translate("/shop/categories")</h6>
+
+        <!--  Catagories  -->
+        <div class="catagories-menu">
+            <ul id="menu-content2" class="menu-content collapse show">
+                <li>
+                    <a href="@Url.ContentUrl(Model.MenuPages.FirstOrDefault(p => p.Name == "Shop").Page.ContentLink)">@Html.Translate("/shop/all")</a>
+                </li>
+                @foreach (SitePageData page in Model.Categories)
+                {
+                    <li>@Html.ContentLink(page.ContentLink)</li>
+                }
+            </ul>
+        </div>
+    }
+</div>

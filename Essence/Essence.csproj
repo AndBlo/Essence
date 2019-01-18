@@ -259,11 +259,13 @@
     <Compile Include="Controllers\EventFormContainerBlockController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\PreviewPageController.cs" />
+    <Compile Include="Controllers\CollectionProductListPageController.cs" />
     <Compile Include="Controllers\ProductListPagePartialController.cs" />
     <Compile Include="Controllers\ProductListPageController.cs" />
     <Compile Include="Controllers\ProductPagePartialController.cs" />
     <Compile Include="Controllers\ProductPageController.cs" />
     <Compile Include="Controllers\ContactPageController.cs" />
+    <Compile Include="Controllers\StoreBlockController.cs" />
     <Compile Include="Controllers\SalesCampaignBlockController.cs" />
     <Compile Include="Controllers\StandardPageController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
@@ -281,6 +283,7 @@
     <Compile Include="Models\Media\DefaultMedia1.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Media\SvgFile.cs" />
+    <Compile Include="Models\Pages\CollectionProductListPage.cs" />
     <Compile Include="Models\Pages\ProductListPage.cs" />
     <Compile Include="Models\Pages\ProductPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
@@ -290,6 +293,7 @@
     <Compile Include="Models\ViewModels\IPageViewModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Models\ViewModels\PreviewPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\CollectionProductListPageViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductListPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteContentIcons.cs" />
@@ -300,6 +304,7 @@
   <ItemGroup>
     <Folder Include="Models\Properties\" />
     <Folder Include="modules\_protected\EPiServer.Labs.LanguageManager\Translation\" />
+    <Folder Include="Views\ProductListPage\Layouts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientResources\iPhone4\device-320x480.png" />
@@ -486,11 +491,10 @@
     <Content Include="Views\StandardPage\Index.cshtml" />
     <Content Include="Views\Shared\_NavigationMenu.cshtml" />
     <Content Include="Views\ProductPage\Index.cshtml" />
-    <Content Include="Views\Shared\StoreBlock.cshtml" />
     <Content Include="Views\ContactPage\Index.cshtml" />
-    <Content Include="Views\Shared\CampaignBlock.cshtml" />
+    <Content Include="Views\Shared\jhjhjhCampaignBlock.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\ProductListPage\Layouts\_LeftSideMenu.cshtml" />
+    <Content Include="Views\Shared\Layouts\_LeftSideMenu.cshtml" />
     <Content Include="Views\ProductListPage\Index.cshtml" />
     <Content Include="Views\ProductPagePartial\Index.cshtml" />
     <Content Include="Views\ProductListPage\_ProductPartial.cshtml" />
@@ -501,11 +505,16 @@
     <Content Include="Views\ProductListPagePartial\Index.cshtml" />
     <Content Include="Views\Shared\EventFormContainerBlock.cshtml" />
     <Content Include="Views\SalesCampaignBlock\Index.cshtml" />
-    <Content Include="Views\SalesCampaignWideBlock\Index.cshtml" />
-    <Content Include="Views\SalesCampaignNarrowBlock\Index.cshtml" />
+    <Content Include="Views\SalesCampaignBlockWide\Index.cshtml" />
+    <Content Include="Views\SalesCampaignBlockNarrow\Index.cshtml" />
     <Content Include="Views\EventFormContainerBlock\Index.cshtml" />
     <Content Include="Views\EventFormContainerWideBlock\Index.cshtml" />
     <Content Include="Views\EventFormContainerNarrowBlock\Index.cshtml" />
+    <Content Include="Views\CollectionProductListPage\Index.cshtml" />
+    <Content Include="Views\Shared\_CategoriesListWidget.cshtml" />
+    <Content Include="Views\StoreBlock\Index.cshtml" />
+    <Content Include="Views\StoreWideBlock\Index.cshtml" />
+    <Content Include="Views\StoreNarrowBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

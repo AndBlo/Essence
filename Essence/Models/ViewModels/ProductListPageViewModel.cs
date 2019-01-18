@@ -10,6 +10,8 @@ namespace Essence.Models.ViewModels
         }
 
         public string SearchText { get; set; }
-        public List<ProductPage> SearchResult { get; set; }
+        public List<ProductPage> ProductsToDisplay { get; set; }
+        public int? ProductPageCount
+            => ProductsToDisplay?.Count;
     }
 }

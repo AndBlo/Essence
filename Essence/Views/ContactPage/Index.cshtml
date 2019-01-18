@@ -1,5 +1,8 @@
 @using Essence.Models.ViewModels
 @using Essence.Models.Pages
+@using Essence.Business.ExtensionMethods
+@using EPiServer.Core
+@using Essence
 @model PageViewModel<ContactPage>
 
 <div class="container">
@@ -10,12 +13,21 @@
         @Html.PropertyFor(m => m.CurrentPage.MainBody)
     </div>
 
-    @Html.PropertyFor(m => m.CurrentPage.MainContentArea, new
+    <div @Html.EditAttributes(m => m.CurrentPage.MainContentArea)>
+        <div class="row contact-area">
+            @foreach (var contentItem in Model.CurrentPage.MainContentArea.Items)
+            {
+                Html.RenderContentData(contentItem.ContentLink.Get<IContent>(), true, SiteTags.Full);
+            }
+        </div>
+    </div>
+
+    @*@Html.PropertyFor(m => m.CurrentPage.MainContentArea, new
         {
            CustomTag = "div",
            CssClass = "row contact-area",
            ChildrenCustomTagName = "div",
            ChildrenCssClass = "col-12 col-sm-6 col-lg-6",
            Tag = string.Empty
-        })
+        })*@
 </div>

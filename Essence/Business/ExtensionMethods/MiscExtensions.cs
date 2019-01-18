@@ -1,5 +1,6 @@
 using EPiServer;
 using EPiServer.Core;
+using EPiServer.Filters;
 using EPiServer.ServiceLocation;
 using Essence.Models.Pages;
 using System;
@@ -76,6 +77,17 @@ namespace Essence.Business.ExtensionMethods
             pages = loader.GetChildren<PageData>(listRoot).OfType<PageData>();
 
             return pages;
+        }
+
+        public static IEnumerable<PageData> GetChildren(this PageData CurrentPage, bool OnlyVisibleToVisitors)
+        {
+            var loader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            IEnumerable<PageData> pages = new List<PageData>();
+            PageReference listRoot = CurrentPage.PageLink;
+
+            pages = loader.GetChildren<PageData>(listRoot).OfType<PageData>();
+
+            return OnlyVisibleToVisitors ? FilterForVisitor.Filter(pages).Cast<PageData>().Where(page => page.VisibleInMenu) : pages;
         }
 
         public static bool HasChildren(this PageData CurrentPage)

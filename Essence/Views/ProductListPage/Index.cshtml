@@ -3,7 +3,7 @@
 @using Essence.Business.ExtensionMethods
 @model ProductListPageViewModel
 @{
-    Layout = "~/Views/ProductListPage/Layouts/_LeftSideMenu.cshtml";
+    Layout = "~/Views/Shared/Layouts/_LeftSideMenu.cshtml";
 }
 
 <div class="shop_grid_product_area">
@@ -12,15 +12,15 @@
             <div class="product-topbar d-flex align-items-center justify-content-between">
                 <!-- Total Products -->
                 <div class="total-products">
-                    @if (Model.CurrentPage.ProductPageCount.HasValue)
+                    @if (Model.ProductPageCount.HasValue)
                     {
-                        <p><span>@Model.CurrentPage.ProductPageCount.Value</span> @Html.Translate("/shop/productsfound")</p>
+                        <p><span>@Model.ProductPageCount.Value</span> @Html.Translate("/shop/productsfound")</p>
                     }
                     else
                     {
-                        if (Model.SearchResult != null && Model.SearchResult.Count > 0)
+                        if (Model.ProductsToDisplay != null && Model.ProductsToDisplay.Count > 0)
                         {
-                            <p><span>@Model.SearchResult.Count</span> @Html.Translate("/shop/productsfound")</p>
+                            <p><span>@Model.ProductsToDisplay.Count</span> @Html.Translate("/shop/productsfound")</p>
                         }
                         else
                         {
@@ -45,29 +45,29 @@
         </div>
     </div>
 
-    @if (Model.SearchText == null)
-    {
-        @Html.PropertyFor(x => x.CurrentPage.Products,
-    new
-    {
-        CustomTag = "div",
-        CssClass = "row",
-        ChildrenCustomTagName = "div",
-        ChildrenCssClass = "col-12 col-sm-6 col-lg-4",
-        Tag = string.Empty
-    })
-    }
-    else
-    {
-        <div class="row">
-            @foreach (var page in Model.SearchResult)
-            {
-                <div class="col-12 col-sm-6 col-lg-4">
-                    @Html.Partial("_ProductPartial", page)
-                </div>
-            }
-        </div>
-    }
+    @*@if (Model.SearchText == null)
+        {
+            @Html.PropertyFor(x => x.CurrentPage.Products,
+        new
+        {
+            CustomTag = "div",
+            CssClass = "row",
+            ChildrenCustomTagName = "div",
+            ChildrenCssClass = "col-12 col-sm-6 col-lg-4",
+            Tag = string.Empty
+        })
+        }
+        else
+        {*@
+    <div class="row">
+        @foreach (var page in Model.ProductsToDisplay)
+        {
+            <div class="col-12 col-sm-6 col-lg-4">
+                @Html.Partial("_ProductPartial", page)
+            </div>
+        }
+    </div>
+    @*}*@
 
     @*@Html.PropertyFor(m => m.CurrentPage.Products, new { CssClass = "row" })*@
 </div>
@@ -87,24 +87,26 @@
 @section SideMenu{
     <div class="shop_sidebar_area">
 
-        <!-- ##### Single Widget ##### -->
-        <div class="widget catagory mb-50">
-            @if (Model.MenuPages.Count() > 0 && Model.MenuPages.Any(p => p.Name == "Shop"))
-            {
-                <!-- Widget Title -->
-                <h6 class="widget-title mb-30">@Html.Translate("/shop/categories")</h6>
+        @Html.Partial("_CategoriesListWidget", Model)
 
-                <!--  Catagories  -->
-                <div class="catagories-menu">
-                    <ul id="menu-content2" class="menu-content collapse show">
-                        @foreach (SitePageData page in Model.MenuPages.Where(p => p.Name == "Shop").First().GetChildren())
-                        {
-                            <li>@Html.ContentLink(page.ContentLink)</li>
-                        }
-                    </ul>
-                </div>
-            }
-        </div>
+        <!-- ##### Single Widget ##### -->
+        @*<div class="widget catagory mb-50">
+                @if (Model.MenuPages.Count() > 0 && Model.MenuPages.Any(p => p.Name == "Shop"))
+                {
+                    <!-- Widget Title -->
+                    <h6 class="widget-title mb-30">@Html.Translate("/shop/categories")</h6>
+
+                    <!--  Catagories  -->
+                    <div class="catagories-menu">
+                        <ul id="menu-content2" class="menu-content collapse show">
+                            @foreach (SitePageData page in Model.MenuPages.Where(p => p.Name == "Shop").First().GetChildren(OnlyVisibleToVisitors: true))
+                            {
+                                <li>@Html.ContentLink(page.ContentLink)</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>*@
 
         @*<!-- ##### Single Widget ##### -->
             <div class="widget price mb-50">

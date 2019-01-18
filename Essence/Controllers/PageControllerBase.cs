@@ -35,16 +35,35 @@ namespace Essence.Controllers
         {
             var viewmodel = PageViewModel.Create(currentPage);
 
+            Init(viewmodel);
+
+            return viewmodel;
+        }
+
+        internal void Init<P> (PageViewModel<P> viewmodel) where P : SitePageData
+        {
             viewmodel.StartPage = loader.Get<StartPage>(ContentReference.StartPage);
 
             viewmodel.MenuPages = FilterForVisitor.Filter(
                 loader.GetChildren<SitePageData>(ContentReference.StartPage))
-                .Cast<SitePageData>().Where(page => page.VisibleInMenu);
+                .Cast<SitePageData>().Where(page => page.VisibleInMenu)
+                .Select(p => GetMenuPage(p));
 
+            viewmodel.Section = viewmodel.CurrentPage.ContentLink.GetSection();
 
-            viewmodel.Section = currentPage.ContentLink.GetSection();
+            viewmodel.Categories = viewmodel.MenuPages.FirstOrDefault(m => m.Name == "Shop")?.Children.Cast<ProductListPage>();
+        }
 
-            return viewmodel;
+        internal IMenuPage GetMenuPage(SitePageData sitePageData)
+        {
+            return new MenuPage
+            {
+                Name = sitePageData.Name,
+                Page = sitePageData,
+                Children = FilterForVisitor.Filter(loader.GetChildren<SitePageData>(sitePageData.ContentLink))
+                .Cast<SitePageData>()
+                .Where(page => page.VisibleInMenu)
+            };
         }
 
         //public static PageData PageFromURL(string url)

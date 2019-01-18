@@ -26,22 +26,11 @@ namespace Essence.Models.Pages
         public virtual string Heading { get; set; }
 
         [Display(
-            Name = "Products",
-            Description = "Content area for product pages to render product thumbs and links to the page itself.",
-            GroupName = SystemTabNames.Content,
-            Order = 200)]
-        [AllowedTypes(typeof(ProductPage))]
-        public virtual ContentArea Products { get; set; }
-
-        public int? ProductPageCount
-            => Products?.Count;
-
-        [Display(
             Name = "List all products",
             Description = "Make this product list a list for all published products.",
             GroupName = SystemTabNames.Content,
             Order = 300)]
-        public virtual bool ListAll { get; set; }
+        public virtual bool ListAllProducts { get; set; }
 
     }
 }

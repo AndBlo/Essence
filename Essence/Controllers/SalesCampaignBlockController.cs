@@ -12,7 +12,7 @@ using Essence.Models.Blocks;
 
 namespace Essence.Controllers
 {
-    [TemplateDescriptor(Tags = new[] { SiteTags.Full }, AvailableWithoutTag = true)]
+    [TemplateDescriptor(Inherited = true, Tags = new[] { SiteTags.Full }, AvailableWithoutTag = true)]
     public class SalesCampaignBlockController : BlockController<SalesCampaignBlock>
     {
         public override ActionResult Index(SalesCampaignBlock currentBlock)
@@ -21,8 +21,8 @@ namespace Essence.Controllers
         }
     }
 
-    [TemplateDescriptor(Tags = new[] { SiteTags.Wide })]
-    public class SalesCampaignWideBlockController : BlockController<SalesCampaignBlock>
+    [TemplateDescriptor(Inherited = true, Tags = new[] { SiteTags.Wide })]
+    public class SalesCampaignBlockWideController : BlockController<SalesCampaignBlock>
     {
         public override ActionResult Index(SalesCampaignBlock currentBlock)
         {
@@ -30,8 +30,8 @@ namespace Essence.Controllers
         }
     }
 
-    [TemplateDescriptor(Tags = new[] { SiteTags.Narrow })]
-    public class SalesCampaignNarrowBlockController : BlockController<SalesCampaignBlock>
+    [TemplateDescriptor(Inherited = true, Tags = new[] { SiteTags.Narrow })]
+    public class SalesCampaignBlockNarrowController : BlockController<SalesCampaignBlock>
     {
         public override ActionResult Index(SalesCampaignBlock currentBlock)
         {

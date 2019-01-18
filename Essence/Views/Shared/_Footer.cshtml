@@ -19,9 +19,9 @@
                     <!-- Footer Menu -->
                     <div class="footer_menu">
                         <ul>
-                            @foreach (SitePageData page in Model.MenuPages)
+                            @foreach (var menuPage in Model.MenuPages)
                             {
-                                <li>@Html.ContentLink(page.ContentLink)</li>
+                                <li>@Html.ContentLink(menuPage.Page.ContentLink)</li>
                             }
                         </ul>
                     </div>
