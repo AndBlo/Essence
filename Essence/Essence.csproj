@@ -256,6 +256,8 @@
     <Compile Include="Business\Initialization\DisplayOptionsInitializationModule.cs" />
     <Compile Include="Business\Initialization\RegisterAdminInitializationModule.cs" />
     <Compile Include="Business\Initialization\RegisterDependencyResolverInitializationModule.cs" />
+    <Compile Include="Business\SceduledJobs\ProductPriceIncreaseTenPercentScheduledJob.cs" />
+    <Compile Include="Business\SceduledJobs\ProductPriceDecreaseTenPercentScheduledJob.cs" />
     <Compile Include="Controllers\EventFormContainerBlockController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\PreviewPageController.cs" />
